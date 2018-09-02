@@ -1,0 +1,26 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: schoki-cloud-server
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+      preferred-networks:
+        - 192.168
+        - 10.0
+
+
+
+eureka:
+  instance:
+    hostname: localname
+  client:
+    healthcheck:
+      enabled: true
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
