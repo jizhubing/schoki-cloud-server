@@ -16,7 +16,7 @@ spring:
 
 eureka:
   instance:
-    hostname: localname
+    hostname: localhost
   client:
     healthcheck:
       enabled: true
