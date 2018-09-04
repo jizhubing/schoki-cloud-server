@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <!-- 可以看到 thymeleaf 是通过在标签里添加额外属性来绑定动态数据的 -->
+    <title th:text="${title}"></title>
+    <script type="text/javascript" th:src="@{/js/hello.js}"></script>
+</head>
+<body>
+    <h1 th:text="${desc}">欢迎啊</h1>
+    <h2>=======作者信息如下==========</h2>
+    <p th:text="${author?.name}"></p>
+    <p th:text="${author?.age}"></p>
+    <p th:text="${author?.email}"></p>
+</body>
+</html>

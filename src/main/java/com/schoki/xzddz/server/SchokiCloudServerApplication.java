@@ -22,7 +22,7 @@ public class SchokiCloudServerApplication {
      *     -main
      *         -java
      *             -package
-     *                 #主函数，启动类，运行它如果运行了 Tomcat、Jetty、Undertow 等容器
+     *                 #主函数， 启动类，运行它如果运行了 Tomcat、Jetty、Undertow 等容器
      *                 -SpringbootApplication
      *         -resouces
      *             #存放静态资源 js/css/images 等
