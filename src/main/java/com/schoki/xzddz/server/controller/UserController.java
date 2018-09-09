@@ -33,8 +33,8 @@ public class UserController {
     }
 
     @GetMapping("/getUserByPage")
-    public PageInfo<User> getUserByPage(){
-        PageInfo<User> userPageInfo = PageHelper.startPage(1,10).setOrderBy("id desc").doSelectPageInfo(() -> userService.selectAll());
+    public PageInfo<User> getUserByPage() {
+        PageInfo<User> userPageInfo = PageHelper.startPage(1, 10).setOrderBy("id desc").doSelectPageInfo(() -> userService.selectAll());
         return userPageInfo;
     }
 
@@ -60,8 +60,9 @@ public class UserController {
 
     @PostMapping
     public int addUser(@RequestBody User user) {
-        String sql = "insert into t_user(username,password) values(?,?)";
-        return jdbcTemplate.update(sql, user.getUsername(), user.getPassword());
+       /* String sql = "insert into t_user(username,password) values(?,?)";
+        return jdbcTemplate.update(sql, user.getUsername(), user.getPassword());*/
+        return userService.addUser(user);
     }
 
     @PutMapping("/{id}")

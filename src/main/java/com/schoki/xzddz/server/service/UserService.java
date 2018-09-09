@@ -12,7 +12,16 @@ import java.util.List;
 public interface UserService {
     /**
      * 查询所有用户信息
+     *
      * @return list user
      */
     List<User> selectAll();
+
+    /**
+     * 添加User
+     *
+     * @param user user
+     * @return result
+     */
+    int addUser(User user);
 }
