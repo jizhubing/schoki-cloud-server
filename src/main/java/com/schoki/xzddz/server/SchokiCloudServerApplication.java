@@ -1,18 +1,13 @@
 package com.schoki.xzddz.server;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-
 @SpringBootApplication
-@EnableEurekaServer
+//@EnableEurekaClient
 @RestController //@RestController注解相当于 @Controller和ResponseBody
 public class SchokiCloudServerApplication {
 
