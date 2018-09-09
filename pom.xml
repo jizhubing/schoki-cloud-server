@@ -29,6 +29,18 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>RELEASE</version>
+            <!--<version>1.2.32</version>-->
+        </dependency>
+
         <!--整合swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
