@@ -9,6 +9,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 /**
  * @author : jzb219@gmail.com
@@ -40,6 +41,17 @@ public class BookHandler {
     @RabbitListener(queues = {RabbitConfig.MANUAL_BOOK_QUEUE})
     public void listenerManualAck(Book book, Message message, Channel channel) {
         log.info("ListenerManual 监听的消息：[{}]",book.toString());
+        try {
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @RabbitListener(queues = {RabbitConfig.REGISTER_QUEUE_NAME})
+    public void listenerDelayQueue(Book book , Message message,Channel channel) {
+        log.info("listenerDelayQueue监听消息-消费时间-[{}],[{}]",LocalDate.now(),book.toString());
         try {
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
         } catch (IOException e) {
