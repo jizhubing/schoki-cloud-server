@@ -4,6 +4,7 @@ import com.schoki.xzddz.server.model.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @date : 2018/9/9
  */
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 根据用户名称查询
@@ -29,6 +30,14 @@ public interface UserMapper {
      * 保存用户信息
      * @param user : user
      * @return int
+     *//*
+    int insert(User user);*/
+
+    /**
+     * 统计
+     *
+     * @param username username
+     * @return
      */
-    int insert(User user);
+    int countByUsrename(String username);
 }

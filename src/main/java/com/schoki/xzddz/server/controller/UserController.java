@@ -1,6 +1,9 @@
 package com.schoki.xzddz.server.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.schoki.xzddz.server.model.po.User;
+import com.schoki.xzddz.server.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,9 +24,18 @@ public class UserController {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private final UserService userService;
+
     @Autowired
-    public UserController(JdbcTemplate jdbcTemplate) {
+    public UserController(JdbcTemplate jdbcTemplate, UserService userService) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userService = userService;
+    }
+
+    @GetMapping("/getUserByPage")
+    public PageInfo<User> getUserByPage(){
+        PageInfo<User> userPageInfo = PageHelper.startPage(1,10).setOrderBy("id desc").doSelectPageInfo(() -> userService.selectAll());
+        return userPageInfo;
     }
 
     @GetMapping
