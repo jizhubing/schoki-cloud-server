@@ -29,6 +29,34 @@
 
     <dependencies>
 
+        <!-- 服务端：带UI界面 -->
+       <!-- <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        &lt;!&ndash; 客户端包 &ndash;&gt;
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        &lt;!&ndash; 安全认证 &ndash;&gt;
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        &lt;!&ndash; 端点 &ndash;&gt;
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>-->
+        <!-- 在管理界面中与 JMX-beans 进行交互所需要被依赖的 JAR -->
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-core</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -83,9 +111,11 @@
             <version>1.3.2</version>
         </dependency>
 
+
         <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+            <version>RELEASE</version>
         </dependency>-->
 
         <!-- 默认就内嵌了Tomcat 容器，如需要更换容器也极其简单-->
@@ -167,6 +197,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

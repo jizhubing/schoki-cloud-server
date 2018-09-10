@@ -62,6 +62,10 @@ public class RabbitConfig {
     public static final String REGISTER_EXCHANGE_NAME = "dev.book.register.exchange";
     public static final String ROUTING_KEY = "all";
 
+    public static final String SCHOKI_REGISTER_QUEUE_NAME = "YANGQIANYI_SHI_SB_QUEUE";
+    public static final String SCHOKI_REGISTER_EXCHANGE_NAME = "YANGQIANYI_SHI_SB_EXCHANGE";
+    public static final String SCHOKI_ROUTING_KEY = "all";
+
     @Bean
     public Queue delayProcessQueue() {
         Map<String, Object> params = Maps.newHashMap();
@@ -95,6 +99,22 @@ public class RabbitConfig {
     public Binding registerBookBinding() {
         //
         return BindingBuilder.bind(registerBookQueue()).to(registerBookTopicExchange()).with(ROUTING_KEY);
+    }
+
+    @Bean
+    public Queue schokiRegisterBookQueue() {
+        return new Queue(SCHOKI_REGISTER_QUEUE_NAME, true);
+    }
+
+    @Bean
+    public TopicExchange schokiRegisterBookTopicExchange() {
+        return new TopicExchange(SCHOKI_REGISTER_EXCHANGE_NAME);
+    }
+
+    @Bean
+    public Binding schokiRegisterBookBinding() {
+        //
+        return BindingBuilder.bind(schokiRegisterBookQueue()).to(schokiRegisterBookTopicExchange()).with(ROUTING_KEY);
     }
 
 
